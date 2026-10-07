@@ -1,1 +1,28 @@
 
+import random
+import pygame
+ 
+WIDTH, HEIGHT = 900, 400
+GROUND_Y = 340
+FPS = 60
+BG_COLOR = (245, 245, 245)
+GROUND_COLOR = (80, 80, 80)
+GRAVITY, JUMP_FORCE = 0.6, -14
+HIGH_SCORE_FILE = "dino_highscore.txt"
+ 
+combo = 0
+ 
+ 
+def dino_tint(on_ground):
+    """Return an (r, g, b) colour override for the dino based on whether it's on the ground, or None for the default green."""
+    return None if on_ground else (240, 170, 40)
+ 
+ 
+def on_obstacle_passed(obstacle, score):
+    """Called once, the frame an obstacle finishes scrolling past the dino. Add a sound or a combo counter here."""
+    global combo
+    combo += 1
+ 
+ 
+def max_jumps():
+    """Return how many jumps the dino gets before it must land again (2 for a double jump), or None for the default of 1."""
